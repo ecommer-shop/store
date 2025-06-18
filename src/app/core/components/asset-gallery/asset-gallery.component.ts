@@ -2,8 +2,6 @@ import { AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnInit,
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 
 import { AssetFragment } from '../../../common/generated-types';
-
-import './types.d';
 import { isPlatformBrowser } from '@angular/common';
 
 export type AssetWithDimensions = Pick<AssetFragment, 'id' | 'preview' | 'width' | 'height'>;

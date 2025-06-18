@@ -35,3 +35,6 @@ declare class DriftZoom {
 declare module 'drift-zoom' {
     export = DriftZoom;
 }
+
+declare module 'photoswipe';
+declare module 'photoswipe/lightbox';
