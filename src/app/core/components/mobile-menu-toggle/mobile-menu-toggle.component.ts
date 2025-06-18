@@ -7,6 +7,7 @@ import { StateService } from '../../providers/state/state.service';
     templateUrl: './mobile-menu-toggle.component.html',
     // styleUrls: ['./mobile-menu-toggle.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MobileMenuToggleComponent {
 

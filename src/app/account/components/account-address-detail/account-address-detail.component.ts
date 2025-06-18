@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { Observable, filter, map, switchMap  } from 'rxjs';
 
 import {
     GetAvailableCountriesQuery,
@@ -22,6 +21,7 @@ import { UPDATE_ADDRESS } from './account-address-detail.graphql';
     templateUrl: './account-address-detail.component.html',
     // styleUrls: ['./account-address-detail.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountAddressDetailComponent implements OnInit {
 

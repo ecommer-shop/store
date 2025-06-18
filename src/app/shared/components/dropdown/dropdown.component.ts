@@ -10,8 +10,7 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
-import { fromEvent, Subscription } from 'rxjs';
-import { debounceTime, filter, take } from 'rxjs/operators';
+import { fromEvent, Subscription, debounceTime, filter, take } from 'rxjs';
 
 import { DropdownTriggerDirective } from './dropdown-trigger.directive';
 
@@ -38,6 +37,7 @@ export type DropdownPosition = 'top' | 'right' | 'bottom' | 'left' | 'top-left' 
     templateUrl: './dropdown.component.html',
     // styleUrls: ['./dropdown.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DropdownComponent {
     /** If true, the dropdown will close when the user clicks anywhere on the document */

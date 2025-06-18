@@ -9,6 +9,7 @@ import { AssetPreviewPipe } from '../../pipes/asset-preview.pipe';
     templateUrl: './collection-card.component.html',
     // styleUrls: ['./collection-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CollectionCardComponent implements OnChanges {
     @Input() collection: NonNullable<GetCollectionQuery['collection']>;

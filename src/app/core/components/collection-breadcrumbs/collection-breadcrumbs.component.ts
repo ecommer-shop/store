@@ -7,6 +7,7 @@ import { GetCollectionQuery } from '../../../common/generated-types';
     templateUrl: './collection-breadcrumbs.component.html',
     styleUrls: ['./collection-breadcrumbs.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CollectionBreadcrumbsComponent {
 

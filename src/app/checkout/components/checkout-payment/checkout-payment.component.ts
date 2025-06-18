@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
 
 import { AddPaymentMutation, AddPaymentMutationVariables, GetEligiblePaymentMethodsQuery } from '../../../common/generated-types';
 import { DataService } from '../../../core/providers/data/data.service';
@@ -14,6 +13,7 @@ import { ADD_PAYMENT, GET_ELIGIBLE_PAYMENT_METHODS } from './checkout-payment.gr
     templateUrl: './checkout-payment.component.html',
     // styleUrls: ['./checkout-payment.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckoutPaymentComponent implements OnInit {
     cardNumber: string;

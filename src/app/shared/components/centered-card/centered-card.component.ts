@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     templateUrl: './centered-card.component.html',
     styleUrls: ['./centered-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CenteredCardComponent {
     @Input() title: string;

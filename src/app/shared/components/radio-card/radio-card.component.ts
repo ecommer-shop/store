@@ -18,6 +18,7 @@ import { RadioCardFieldsetComponent } from './radio-card-fieldset.component';
     styleUrls: ['./radio-card.component.scss'],
     exportAs: 'KbRadioCard',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RadioCardComponent<T = any> implements OnInit, OnDestroy {
     @Input() item: T;

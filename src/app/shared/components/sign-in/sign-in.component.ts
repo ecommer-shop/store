@@ -12,6 +12,7 @@ import { SIGN_IN } from './sign-in.graphql';
     templateUrl: './sign-in.component.html',
     styleUrls: ['./sign-in.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SignInComponent {
     @Input() navigateToOnSuccess: any[] | undefined;

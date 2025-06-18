@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { merge, Observable } from 'rxjs';
-import { map, shareReplay, switchMap, take } from 'rxjs/operators';
+import { merge, Observable, map, shareReplay, switchMap, take } from 'rxjs';
 
 import {
     AdjustItemQuantityMutation, AdjustItemQuantityMutationVariables,
@@ -20,6 +19,7 @@ import { ActiveService } from '../../providers/active/active.service';
     templateUrl: './cart-drawer.component.html',
     styleUrls: ['./cart-drawer.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CartDrawerComponent implements OnInit {
     @Input() visible = false;

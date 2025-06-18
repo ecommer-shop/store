@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged, map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, distinctUntilChanged, map } from 'rxjs';
 
 export interface AppState {
     signedIn: boolean;

@@ -15,6 +15,7 @@ import { CHANGE_EMAIL_ADDRESS, CHANGE_PASSWORD } from './account-change-credenti
     templateUrl: './account-change-credentials.component.html',
     // styleUrls: ['./account-change-credentials.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountChangeCredentialsComponent {
     currentPassword = '';

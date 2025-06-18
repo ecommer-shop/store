@@ -2,7 +2,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NavigationEnd, Router, RouterModule, UrlSerializer } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter } from 'rxjs';
 
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';

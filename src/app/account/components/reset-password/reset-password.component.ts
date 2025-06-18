@@ -12,6 +12,7 @@ import { RESET_PASSWORD } from './reset-password.graphql';
     templateUrl: './reset-password.component.html',
     // styleUrls: ['./reset-password.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ResetPasswordComponent {
     password = '';

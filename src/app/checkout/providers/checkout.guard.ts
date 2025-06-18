@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs';
 
 import { GetOrderForCheckoutQuery } from '../../common/generated-types';
 import { DataService } from '../../core/providers/data/data.service';

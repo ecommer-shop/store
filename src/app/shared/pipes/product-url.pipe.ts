@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
     name: 'productUrl',
+    standalone: false
 })
 export class ProductUrlPipe implements PipeTransform {
 

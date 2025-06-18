@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { NetworkStatus, WatchQueryFetchPolicy } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
 import { DocumentNode } from 'graphql';
-import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Observable, filter, map } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',

@@ -13,6 +13,7 @@ import { SIGN_OUT } from './account.graphql';
     templateUrl: './account.component.html',
     // styleUrls: ['./account.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountComponent {
 

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Pipe, PipeTransform } from '@angular/core';
-import { map, take } from 'rxjs/operators';
+import { map, take } from 'rxjs';
 
 import { GetActiveChannelQuery } from '../../common/generated-types';
 import { DataService } from '../../core/providers/data/data.service';
@@ -19,6 +19,7 @@ let channelDataPromise: Promise<any>;
 @Pipe({
     name: 'formatPrice',
     pure: false,
+    standalone: false
 })
 export class FormatPricePipe implements PipeTransform {
 

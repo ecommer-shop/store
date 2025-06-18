@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, combineLatest, merge, Observable, of } from 'rxjs';
-import { distinctUntilChanged, map, mapTo, scan, share, shareReplay, skip, switchMap, take, tap, } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, merge, Observable, of ,distinctUntilChanged, map, mapTo, scan, share, shareReplay, skip, switchMap, take, tap, } from 'rxjs';
 
 import {
     GetCollectionQuery,
@@ -22,8 +21,8 @@ type SearchItem = SearchProductsQuery['search']['items'][number];
 @Component({
     selector: 'vsf-product-list',
     templateUrl: './product-list.component.html',
-// styleUrls: ['./product-list.component.scss'],
-    })
+    standalone: false
+})
 export class ProductListComponent implements OnInit {
     products$: Observable<SearchItem[]>;
     totalResults$: Observable<number>;

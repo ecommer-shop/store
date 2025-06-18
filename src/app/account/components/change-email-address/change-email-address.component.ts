@@ -12,6 +12,7 @@ import { VERIFY_CHANGE_EMAIL_ADDRESS } from './change-email-address.graphql';
     templateUrl: './change-email-address.component.html',
     // styleUrls: ['./change-email-address.component.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
+    standalone: false
 })
 export class ChangeEmailAddressComponent implements OnInit {
     message = 'Verifying new email address...';

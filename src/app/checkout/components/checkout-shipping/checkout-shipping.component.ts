@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of, Subject } from 'rxjs';
-import { map, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { Observable, of, Subject, map, mergeMap, switchMap, takeUntil, tap } from 'rxjs';
 
 import {
     AddressFragment,
@@ -44,6 +43,7 @@ export type AddressFormValue = Pick<AddressFragment, Exclude<keyof AddressFragme
     templateUrl: './checkout-shipping.component.html',
     // styleUrls: ['./checkout-shipping.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckoutShippingComponent implements OnInit, OnDestroy {
     @ViewChild('addressForm') addressForm: AddressFormComponent;

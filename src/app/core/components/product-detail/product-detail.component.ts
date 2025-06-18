@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { Subscription, filter, map, switchMap, withLatestFrom } from 'rxjs';
 
 import {
     AddToCartMutation,
@@ -24,6 +23,7 @@ type Collection = NonNullable<GetProductDetailQuery['product']>['collections'][n
     selector: 'vsf-product-detail',
     templateUrl: './product-detail.component.html',
     styleUrls: ['./product-detail.component.scss'],
+    standalone: false
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
 

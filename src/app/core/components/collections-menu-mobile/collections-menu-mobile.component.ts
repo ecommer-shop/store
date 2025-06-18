@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
 
 import { GetCollectionsQuery, GetCollectionsQueryVariables } from '../../../common/generated-types';
 import { GET_COLLECTIONS } from '../../../common/graphql/documents.graphql';
@@ -16,6 +15,7 @@ type CollectionItem = GetCollectionsQuery['collections']['items'][number];
     templateUrl: './collections-menu-mobile.component.html',
     styleUrls: ['./collections-menu-mobile.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CollectionsMenuMobileComponent implements OnInit {
     @HostBinding('class.visible')

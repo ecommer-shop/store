@@ -11,8 +11,7 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { debounceTime, map, takeUntil } from 'rxjs/operators';
+import { Observable, Subject, debounceTime, map, takeUntil } from 'rxjs';
 
 import { GetCollectionsQuery, GetCollectionsQueryVariables } from '../../../common/generated-types';
 import { GET_COLLECTIONS } from '../../../common/graphql/documents.graphql';
@@ -27,6 +26,7 @@ type CollectionItem = GetCollectionsQuery['collections']['items'][number];
     templateUrl: './collections-menu.component.html',
     // styleUrls: ['./collections-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CollectionsMenuComponent implements OnInit, OnDestroy {
 
@@ -73,7 +73,7 @@ export class CollectionsMenuComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.destroy$.next();
+        this.destroy$.next(null);
         this.destroy$.complete();
     }
 

@@ -12,6 +12,7 @@ import { VERIFY } from './verify.graphql';
     templateUrl: './verify.component.html',
     // styleUrls: ['./verify.component.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
+    standalone: false
 })
 export class VerifyComponent {
     password = '';

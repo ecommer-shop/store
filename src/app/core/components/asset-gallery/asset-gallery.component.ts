@@ -10,6 +10,7 @@ export type AssetWithDimensions = Pick<AssetFragment, 'id' | 'preview' | 'width'
     selector: 'vsf-asset-gallery',
     templateUrl: './asset-gallery.component.html',
     styleUrls: ['./asset-gallery.component.scss'],
+    standalone: false
 })
 export class AssetGalleryComponent implements OnInit, OnChanges, AfterViewInit {
     @Input() assets?: AssetWithDimensions[] = [];

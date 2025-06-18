@@ -8,6 +8,7 @@ import { AddressFragment, CountryFragment, OrderAddressFragment } from '../../..
     templateUrl: './address-form.component.html',
     // styleUrls: ['./address-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddressFormComponent implements OnChanges {
 

@@ -1,8 +1,7 @@
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { Injectable, Injector } from '@angular/core';
-import { race, timer } from 'rxjs';
-import { finalize, mapTo, take } from 'rxjs/operators';
+import { race, timer, finalize, take } from 'rxjs';
 
 import { NotificationComponent } from '../../components/notification/notification.component';
 

@@ -7,6 +7,7 @@ import { CartFragment, GetActiveOrderQuery } from '../../../common/generated-typ
     templateUrl: './cart-contents.component.html',
     // styleUrls: ['./cart-contents.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CartContentsComponent {
     @Input() cart: GetActiveOrderQuery['activeOrder'];

@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { filter, map, startWith, switchMap } from 'rxjs/operators';
+import { Observable, filter, map, startWith, switchMap } from 'rxjs';
 
 import { GetOrderForCheckoutQuery, GetNextOrderStatesQuery, TransitionToAddingItemsMutation } from '../../../common/generated-types';
 import { DataService } from '../../../core/providers/data/data.service';
@@ -14,6 +13,7 @@ import { GET_NEXT_ORDER_STATES, TRANSITION_TO_ADDING_ITEMS } from './checkout-pr
     templateUrl: './checkout-process.component.html',
     // styleUrls: ['./checkout-process.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckoutProcessComponent implements OnInit {
 

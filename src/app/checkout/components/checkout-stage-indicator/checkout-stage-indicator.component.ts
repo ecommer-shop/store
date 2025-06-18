@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     templateUrl: './checkout-stage-indicator.component.html',
     // styleUrls: ['./checkout-stage-indicator.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckoutStageIndicatorComponent  {
     @Input() signedIn = false;

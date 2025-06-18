@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     templateUrl: './checkout-sign-in.component.html',
     styleUrls: ['./checkout-sign-in.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckoutSignInComponent {
 }

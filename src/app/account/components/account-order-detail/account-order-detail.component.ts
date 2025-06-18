@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { Observable, filter, map, switchMap } from 'rxjs';
 
 import { GetOrderQuery, GetOrderQueryVariables } from '../../../common/generated-types';
 import { notNullOrUndefined } from '../../../common/utils/not-null-or-undefined';
@@ -14,6 +13,7 @@ import { GET_ORDER } from './account-order-detail.graphql';
     templateUrl: './account-order-detail.component.html',
     styleUrls: ['./account-order-detail.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountOrderDetailComponent implements OnInit {
 

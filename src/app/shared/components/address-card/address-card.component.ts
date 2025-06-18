@@ -8,6 +8,7 @@ import { DataService } from '../../../core/providers/data/data.service';
     templateUrl: './address-card.component.html',
     // styleUrls: ['./address-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddressCardComponent {
     @Input() address: OrderAddressFragment | AddressFragment;

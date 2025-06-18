@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { Observable, map, switchMap, take } from 'rxjs';
 
 import { GetActiveCustomerQuery } from '../../../common/generated-types';
 import { GET_ACTIVE_CUSTOMER } from '../../../common/graphql/documents.graphql';
@@ -12,6 +11,7 @@ import { StateService } from '../../providers/state/state.service';
     templateUrl: './account-link.component.html',
     // styleUrls: ['./account-link.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountLinkComponent implements OnInit {
 

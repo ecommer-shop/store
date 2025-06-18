@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Observable, filter, map } from 'rxjs';
 
 import { GetAccountOverviewQuery } from '../../../common/generated-types';
 import { notNullOrUndefined } from '../../../common/utils/not-null-or-undefined';
@@ -15,6 +14,7 @@ import { GET_ACCOUNT_OVERVIEW } from './account-dashboard.graphql';
     templateUrl: './account-dashboard.component.html',
     // styleUrls: ['./account-dashboard.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountDashboardComponent implements OnInit {
 

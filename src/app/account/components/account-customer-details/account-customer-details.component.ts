@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { filter, map } from 'rxjs/operators';
+import { filter, map } from 'rxjs';
 
 import {
     GetActiveCustomerQuery,
@@ -19,6 +19,7 @@ import { UPDATE_CUSTOMER_DETAILS } from './account-customer-details.graphql';
     templateUrl: './account-customer-details.component.html',
     // styleUrls: ['./account-customer-details.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountCustomerDetailsComponent implements OnInit {
 

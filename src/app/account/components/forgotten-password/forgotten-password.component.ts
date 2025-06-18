@@ -11,6 +11,7 @@ import { REQUEST_PASSWORD_RESET } from './forgotten-password.graphql';
     templateUrl: './forgotten-password.component.html',
     styleUrls: ['./forgotten-password.component.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
+    standalone: false
 })
 export class ForgottenPasswordComponent {
     emailAddress = '';

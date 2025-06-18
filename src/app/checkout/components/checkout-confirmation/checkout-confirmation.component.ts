@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { filter, map, mergeMap, shareReplay, switchMap, take } from 'rxjs/operators';
+import { Observable, of, filter, map, mergeMap, shareReplay, switchMap, take } from 'rxjs';
 
 import { REGISTER } from '../../../account/components/register/register.graphql';
 import {
@@ -21,6 +20,7 @@ import { GET_ORDER_BY_CODE } from './checkout-confirmation.graphql';
     templateUrl: './checkout-confirmation.component.html',
     // styleUrls: ['./checkout-confirmation.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckoutConfirmationComponent implements OnInit {
     registrationSent = false;

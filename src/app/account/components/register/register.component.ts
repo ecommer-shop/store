@@ -10,6 +10,7 @@ import { REGISTER } from './register.graphql';
     templateUrl: './register.component.html',
     // styleUrls: ['./register.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RegisterComponent {
     firstName: string;

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
 
 import { GetActiveOrderQuery } from '../../../common/generated-types';
 import { DataService } from '../data/data.service';

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Observable, of, map, switchMap } from 'rxjs';
 
 import { GetActiveCustomerQuery } from '../../common/generated-types';
 import { GET_ACTIVE_CUSTOMER } from '../../common/graphql/documents.graphql';

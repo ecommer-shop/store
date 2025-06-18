@@ -7,6 +7,7 @@ import { SearchProductsQuery } from '../../../common/generated-types';
     templateUrl: './product-card.component.html',
     // styleUrls: ['./product-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProductCardComponent {
 

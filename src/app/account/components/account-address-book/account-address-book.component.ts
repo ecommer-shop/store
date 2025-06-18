@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
 
 import { GetCustomerAddressesQuery } from '../../../common/generated-types';
 import { GET_CUSTOMER_ADDRESSES } from '../../../common/graphql/documents.graphql';
@@ -11,6 +10,7 @@ import { DataService } from '../../../core/providers/data/data.service';
     templateUrl: './account-address-book.component.html',
     // styleUrls: ['./account-address-book.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountAddressBookComponent implements OnInit {
 

@@ -4,6 +4,7 @@ import { AssetFragment } from '../../common/generated-types';
 
 @Pipe({
     name: 'assetPreview',
+    standalone: false
 })
 export class AssetPreviewPipe implements PipeTransform {
     transform(asset?: AssetFragment, ...args: Array<string | number>): string {

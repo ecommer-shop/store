@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
-import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Observable, filter, map } from 'rxjs';
 
 import { GetCollectionsQuery, GetCollectionsQueryVariables } from './common/generated-types';
 import { GET_COLLECTIONS } from './common/graphql/documents.graphql';
@@ -11,7 +10,7 @@ import { StateService } from './core/providers/state/state.service';
 @Component({
     selector: 'vsf-root',
     templateUrl: './app.component.html',
-    // styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent implements OnInit {
     cartDrawerVisible$: Observable<boolean>;

@@ -14,7 +14,8 @@ interface Review {
     selector: 'vsf-top-reviews',
     templateUrl: './top-reviews.component.html',
     styleUrls: ['./top-reviews.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TopReviewsComponent {
     reviews: Review[] = [

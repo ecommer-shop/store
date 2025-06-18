@@ -12,13 +12,13 @@ import {
     SimpleChanges,
     TemplateRef,
 } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { debounceTime, throttleTime } from 'rxjs/operators';
+import { Subject, Subscription, throttleTime  } from 'rxjs';
 
 @Component({
     selector: 'vsf-radio-card-fieldset',
     template: `<fieldset><ng-content></ng-content></fieldset> `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RadioCardFieldsetComponent<T = any> implements OnInit, OnChanges, OnDestroy {
     @Input() selectedItemId: string;

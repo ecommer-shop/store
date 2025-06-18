@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
 
 import {
     AddressFragment,
@@ -20,6 +19,7 @@ import { CREATE_ADDRESS } from './address-modal.graphql';
     templateUrl: './address-modal.component.html',
     // styleUrls: ['./address-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
+    standalone: false
 })
 export class AddressModalComponent implements Dialog<AddressFragment>, OnInit {
     resolveWith: (result?: any) => void;

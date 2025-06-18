@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, shareReplay, take } from 'rxjs/operators';
+import { Observable, map, shareReplay, take } from 'rxjs';
 
 import { GetOrderForCheckoutQuery } from '../../common/generated-types';
 import { DataService } from '../../core/providers/data/data.service';

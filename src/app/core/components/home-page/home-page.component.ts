@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
 import { gql } from 'apollo-angular';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import { GetCollectionsQuery } from '../../../common/generated-types';
@@ -13,6 +12,7 @@ import { DataService } from '../../providers/data/data.service';
     templateUrl: './home-page.component.html',
     styleUrls: ['./home-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HomePageComponent implements OnInit {
 

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
 
 import { GetOrderListQuery, GetOrderListQueryVariables, SortOrder } from '../../../common/generated-types';
 import { DataService } from '../../../core/providers/data/data.service';
@@ -12,6 +11,7 @@ import { GET_ORDER_LIST } from './account-order-list.graphql';
     templateUrl: './account-order-list.component.html',
     // styleUrls: ['./account-order-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountOrderListComponent implements OnInit {
 

@@ -9,7 +9,6 @@ import { DialogButtonsDirective } from '../core/components/modal-dialog/dialog-b
 import { DialogComponentOutletComponent } from '../core/components/modal-dialog/dialog-component-outlet.component';
 import { DialogTitleDirective } from '../core/components/modal-dialog/dialog-title.directive';
 import { ModalDialogComponent } from '../core/components/modal-dialog/modal-dialog.component';
-import { NotificationComponent } from '../core/components/notification/notification.component';
 
 import { AddressCardComponent } from './components/address-card/address-card.component';
 import { AddressFormComponent } from './components/address-form/address-form.component';
@@ -44,7 +43,6 @@ const SHARED_DECLARATIONS = [
     ModalDialogComponent,
     AddressModalComponent,
     CollectionCardComponent,
-    NotificationComponent,
     FormatPricePipe,
     ProductUrlPipe,
     AssetPreviewPipe,

@@ -2,8 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Inject, Injectable, Injector, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, tap } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import { NotificationService } from '../notification/notification.service';

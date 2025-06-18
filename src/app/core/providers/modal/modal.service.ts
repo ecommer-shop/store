@@ -1,8 +1,7 @@
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { Injectable, Injector, Type } from '@angular/core';
-import { Observable, race } from 'rxjs';
-import { finalize, mapTo, take, tap } from 'rxjs/operators';
+import { Observable, race, finalize, mapTo, take } from 'rxjs';
 
 import { ModalDialogComponent } from '../../components/modal-dialog/modal-dialog.component';
 
@@ -79,7 +78,7 @@ export class ModalService {
         });
         const backdropClick$ = overlayRef.backdropClick().pipe(mapTo(undefined));
 
-        return race<R | undefined>(close$, backdropClick$).pipe(
+        return race(close$, backdropClick$).pipe(
             take(1),
             finalize(() => overlayRef.dispose()),
         );

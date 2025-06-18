@@ -1,10 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'vsf-account-sign-in',
-  templateUrl: './account-sign-in.component.html',
-  styleUrls: ['./account-sign-in.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'vsf-account-sign-in',
+    templateUrl: './account-sign-in.component.html',
+    styleUrls: ['./account-sign-in.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountSignInComponent implements OnInit {
 

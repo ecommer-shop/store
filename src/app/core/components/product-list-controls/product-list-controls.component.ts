@@ -19,6 +19,7 @@ export interface FacetWithValues {
     templateUrl: './product-list-controls.component.html',
     // styleUrls: ['./product-list-controls.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProductListControlsComponent implements OnChanges {
     @Input() activeFacetValueIds: string[] = [];
