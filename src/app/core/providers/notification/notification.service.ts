@@ -1,6 +1,6 @@
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
-import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
-import { Injectable, Injector } from '@angular/core';
+import { ComponentPortal } from '@angular/cdk/portal'; // Removed PortalInjector from here
+import { Injectable, Injector } from '@angular/core'; // Ensure Injector is imported
 import { race, timer, finalize, take } from 'rxjs';
 
 import { NotificationComponent } from '../../components/notification/notification.component';
@@ -39,11 +39,14 @@ export class NotificationService {
             }
         };
 
+        // --- CHANGE STARTS HERE ---
         const portal = new ComponentPortal(
             NotificationComponent,
             null,
-            this.createInjector(options, closeFn),
+            this.createNotificationInjector(options, closeFn), // Call the updated private method
         );
+        // --- CHANGE ENDS HERE ---
+
         const notificationRef = overlayRef.attach(portal);
 
         return race<any>(notificationRef.instance.close, timer(options.duration)).pipe(
@@ -79,12 +82,18 @@ export class NotificationService {
         });
     }
 
-    private createInjector(options: NotificationOptions, closeFn: () => void): PortalInjector {
+    // --- CHANGE STARTS HERE ---
+    private createNotificationInjector(options: NotificationOptions, closeFn: () => void): Injector {
         options.templateContext = {
             ...options.templateContext,
             closeFn,
         };
-        const weakMap = new WeakMap<any, any>([[NOTIFICATION_OPTIONS, options]]);
-        return new PortalInjector(this.injector, weakMap);
+        return Injector.create({
+            parent: this.injector,
+            providers: [
+                { provide: NOTIFICATION_OPTIONS, useValue: options }
+            ]
+        });
     }
+    // --- CHANGE ENDS HERE ---
 }

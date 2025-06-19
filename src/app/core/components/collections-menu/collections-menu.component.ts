@@ -1,15 +1,16 @@
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { DOCUMENT } from '@angular/common';
+
 import {
-    ChangeDetectionStrategy,
-    Component,
-    Inject,
-    OnDestroy,
-    OnInit,
-    TemplateRef,
-    ViewChild,
-    ViewContainerRef,
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+  DOCUMENT
 } from '@angular/core';
 import { Observable, Subject, debounceTime, map, takeUntil } from 'rxjs';
 

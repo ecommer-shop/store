@@ -1,6 +1,6 @@
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
-import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
-import { Injectable, Injector, Type } from '@angular/core';
+import { ComponentPortal } from '@angular/cdk/portal'; // Removed PortalInjector from here
+import { Injectable, Injector, Type } from '@angular/core'; // Ensure Injector is imported
 import { Observable, race, finalize, mapTo, take } from 'rxjs';
 
 import { ModalDialogComponent } from '../../components/modal-dialog/modal-dialog.component';
@@ -23,17 +23,17 @@ export class ModalService {
      * @example
      * ```
      * class MyDialog implements Dialog {
-     *  resolveWith: (result?: any) => void;
+     * resolveWith: (result?: any) => void;
      *
-     *  okay() {
-     *    doSomeWork().subscribe(result => {
-     *      this.resolveWith(result);
-     *    })
-     *  }
+     * okay() {
+     * doSomeWork().subscribe(result => {
+     * this.resolveWith(result);
+     * })
+     * }
      *
-     *  cancel() {
-     *    this.resolveWith(false);
-     *  }
+     * cancel() {
+     * this.resolveWith(false);
+     * }
      * }
      * ```
      *
@@ -41,16 +41,16 @@ export class ModalService {
      * <ng-template vsfDialogTitle>Title of the modal</ng-template>
      *
      * <p>
-     *     My Content
+     * My Content
      * </p>
      *
      * <ng-template vsfDialogButtons>
-     *     <button type="button"
-     *             class="btn"
-     *             (click)="cancel()">Cancel</button>
-     *     <button type="button"
-     *             class="btn btn-primary"
-     *             (click)="okay()">Okay</button>
+     * <button type="button"
+     * class="btn"
+     * (click)="cancel()">Cancel</button>
+     * <button type="button"
+     * class="btn btn-primary"
+     * (click)="okay()">Okay</button>
      * </ng-template>
      * ```
      */
@@ -66,7 +66,14 @@ export class ModalService {
             hasBackdrop: true,
         }));
 
-        const portal = new ComponentPortal(ModalDialogComponent, null, this.createInjector(component, options));
+        // --- CHANGE STARTS HERE ---
+        const portal = new ComponentPortal(
+            ModalDialogComponent,
+            null,
+            this.createModalInjector(component, options) // Call the updated private method
+        );
+        // --- CHANGE ENDS HERE ---
+
         const modal = overlayRef.attach(portal);
         setTimeout(() => modal.changeDetectorRef.markForCheck());
 
@@ -84,11 +91,15 @@ export class ModalService {
         );
     }
 
-    private createInjector<T, R>(component: Type<T> & Type<Dialog<R>>,  options?: ModalOptions<T>): PortalInjector {
-        const weakMap = new WeakMap<any, any>([
-            [DIALOG_COMPONENT, component],
-            [MODAL_OPTIONS, options],
-        ]);
-        return new PortalInjector(this.injector, weakMap);
+    // --- CHANGE STARTS HERE ---
+    private createModalInjector<T, R>(component: Type<T> & Type<Dialog<R>>, options?: ModalOptions<T>): Injector {
+        return Injector.create({
+            parent: this.injector,
+            providers: [
+                { provide: DIALOG_COMPONENT, useValue: component },
+                { provide: MODAL_OPTIONS, useValue: options },
+            ],
+        });
     }
+    // --- CHANGE ENDS HERE ---
 }
