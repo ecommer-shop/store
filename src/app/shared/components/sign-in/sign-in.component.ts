@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SignInMutation, SignInMutationVariables } from '../../../common/generated-types';
@@ -6,6 +6,12 @@ import { DataService } from '../../../core/providers/data/data.service';
 import { StateService } from '../../../core/providers/state/state.service';
 
 import { SIGN_IN } from './sign-in.graphql';
+
+enum SignInMutationResponse {
+    CurrentUser = 'CurrentUser',
+    NativeAuthStrategyError = 'NativeAuthStrategyError',
+    InvalidCredentialsError = 'InvalidCredentialsError',
+}
 
 @Component({
     selector: 'vsf-sign-in',
@@ -15,7 +21,7 @@ import { SIGN_IN } from './sign-in.graphql';
     standalone: false
 })
 export class SignInComponent {
-    @Input() navigateToOnSuccess: any[] | undefined;
+    @Input() navigateToOnSuccess: string[] | undefined;
     @Input() displayRegisterLink = true;
 
     emailAddress: string;
@@ -23,10 +29,10 @@ export class SignInComponent {
     rememberMe = false;
     invalidCredentials = false;
 
-    constructor(private dataService: DataService,
-                private stateService: StateService,
-                private router: Router,
-                private changeDetector: ChangeDetectorRef) {}
+    private dataService = inject(DataService);
+    private stateService = inject(StateService);
+    private router = inject(Router);
+    private changeDetector = inject(ChangeDetectorRef);
 
     signIn() {
         this.dataService.mutate<SignInMutation, SignInMutationVariables>(SIGN_IN, {
@@ -36,13 +42,14 @@ export class SignInComponent {
         }).subscribe({
             next: ({login}) => {
                 switch (login.__typename) {
-                    case 'CurrentUser':
+                    case SignInMutationResponse.CurrentUser: {
                         this.stateService.setState('signedIn', true);
                         const commands = this.navigateToOnSuccess || ['/'];
                         this.router.navigate(commands);
                         break;
-                    case 'NativeAuthStrategyError':
-                    case 'InvalidCredentialsError':
+                    }
+                    case SignInMutationResponse.NativeAuthStrategyError:
+                    case SignInMutationResponse.InvalidCredentialsError:
                         this.displayCredentialsError();
                         break;
                 }

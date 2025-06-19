@@ -75,7 +75,7 @@
                   Support
                 </h3>
                 <ul class="mt-4 space-y-4" role="list">
-                  @for (item of navigation.support; track item) {
+                  @for (item of navigation.support; track item.name) {
                     <li>
                       <a
                         [href]="item.href"

@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { inject, Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { StateService } from '../../core/providers/state/state.service';
@@ -7,9 +6,9 @@ import { StateService } from '../../core/providers/state/state.service';
 @Injectable({ providedIn: 'root' })
 export class SignInGuard  {
 
-    constructor(private stateService: StateService) {}
+    private stateService = inject(StateService);
 
-    canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
+    canActivate(): Observable<boolean> {
         return this.stateService.select(state => state.signedIn).pipe(
             map(signedIn => !signedIn),
         );

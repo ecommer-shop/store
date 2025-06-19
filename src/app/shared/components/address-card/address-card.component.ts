@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { AddressFragment, OrderAddressFragment } from '../../../common/generated-types';
-import { DataService } from '../../../core/providers/data/data.service';
 
 @Component({
     selector: 'vsf-address-card',
