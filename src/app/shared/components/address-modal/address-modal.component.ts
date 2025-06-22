@@ -1,44 +1,53 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    OnInit,
+} from "@angular/core";
+import { Observable, map } from "rxjs";
 
 import {
     AddressFragment,
     CountryFragment,
     CreateAddressMutation,
     CreateAddressMutationVariables,
-    GetAvailableCountriesQuery
-} from '../../../common/generated-types';
-import { GET_AVAILABLE_COUNTRIES } from '../../../common/graphql/documents.graphql';
-import { DataService } from '../../../core/providers/data/data.service';
-import { Dialog } from '../../../core/providers/modal/modal-types';
+    GetAvailableCountriesQuery,
+} from "../../../common/generated-types";
+import { GET_AVAILABLE_COUNTRIES } from "../../../common/graphql/documents.graphql";
+import { DataService } from "../../../core/providers/data/data.service";
+import { Dialog } from "../../../core/providers/modal/modal-types";
 
-import { CREATE_ADDRESS } from './address-modal.graphql';
+import { CREATE_ADDRESS } from "./address-modal.graphql";
 
 @Component({
-    selector: 'vsf-address-modal',
-    templateUrl: './address-modal.component.html',
-    // styleUrls: ['./address-modal.component.scss'],
+    selector: "vsf-address-modal",
+    templateUrl: "./address-modal.component.html",
     changeDetection: ChangeDetectionStrategy.Default,
-    standalone: false
+    standalone: false,
 })
 export class AddressModalComponent implements Dialog<AddressFragment>, OnInit {
     resolveWith: (result?: any) => void;
     address: AddressFragment;
     title: string;
     availableCountries$: Observable<CountryFragment[]>;
-    constructor(private dataService: DataService) {}
+    dataService = inject(DataService);
 
     ngOnInit() {
-        this.availableCountries$ = this.dataService.query<GetAvailableCountriesQuery>(GET_AVAILABLE_COUNTRIES).pipe(
-            map(data => data.availableCountries),
-        );
+        this.availableCountries$ = this.dataService
+            .query<GetAvailableCountriesQuery>(GET_AVAILABLE_COUNTRIES)
+            .pipe(map((data) => data.availableCountries));
     }
 
     save(value: any) {
-        this.dataService.mutate<CreateAddressMutation, CreateAddressMutationVariables>(CREATE_ADDRESS, {
-            input: value,
-        }).subscribe(data => {
-            this.resolveWith(data.createCustomerAddress);
-        });
+        this.dataService
+            .mutate<CreateAddressMutation, CreateAddressMutationVariables>(
+                CREATE_ADDRESS,
+                {
+                    input: value,
+                }
+            )
+            .subscribe((data) => {
+                this.resolveWith(data.createCustomerAddress);
+            });
     }
 }

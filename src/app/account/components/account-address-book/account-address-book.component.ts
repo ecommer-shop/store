@@ -1,26 +1,36 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    OnInit,
+} from "@angular/core";
+import { Observable, map } from "rxjs";
 
-import { GetCustomerAddressesQuery } from '../../../common/generated-types';
-import { GET_CUSTOMER_ADDRESSES } from '../../../common/graphql/documents.graphql';
-import { DataService } from '../../../core/providers/data/data.service';
+import { GetCustomerAddressesQuery } from "../../../common/generated-types";
+import { GET_CUSTOMER_ADDRESSES } from "../../../common/graphql/documents.graphql";
+import { DataService } from "../../../core/providers/data/data.service";
 
 @Component({
-    selector: 'vsf-account-address-book',
-    templateUrl: './account-address-book.component.html',
-    // styleUrls: ['./account-address-book.component.scss'],
+    selector: "vsf-account-address-book",
+    templateUrl: "./account-address-book.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class AccountAddressBookComponent implements OnInit {
-
-    addresses$: Observable<NonNullable<GetCustomerAddressesQuery['activeCustomer']>['addresses'] | undefined>;
-    constructor(private dataService: DataService) { }
+    addresses$: Observable<
+        | NonNullable<GetCustomerAddressesQuery["activeCustomer"]>["addresses"]
+        | undefined
+    >;
+    dataService = inject(DataService);
 
     ngOnInit() {
-        this.addresses$ = this.dataService.query<GetCustomerAddressesQuery>(GET_CUSTOMER_ADDRESSES).pipe(
-            map(data => data.activeCustomer && data.activeCustomer.addresses),
-        );
+        this.addresses$ = this.dataService
+            .query<GetCustomerAddressesQuery>(GET_CUSTOMER_ADDRESSES)
+            .pipe(
+                map(
+                    (data) =>
+                        data.activeCustomer && data.activeCustomer.addresses
+                )
+            );
     }
-
 }

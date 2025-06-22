@@ -1,46 +1,53 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 
-import { ResetPasswordMutation, ResetPasswordMutationVariables } from '../../../common/generated-types';
-import { DataService } from '../../../core/providers/data/data.service';
-import { StateService } from '../../../core/providers/state/state.service';
+import {
+    ResetPasswordMutation,
+    ResetPasswordMutationVariables,
+} from "../../../common/generated-types";
+import { DataService } from "../../../core/providers/data/data.service";
+import { StateService } from "../../../core/providers/state/state.service";
 
-import { RESET_PASSWORD } from './reset-password.graphql';
+import { RESET_PASSWORD } from "./reset-password.graphql";
 
 @Component({
-    selector: 'vsf-reset-password',
-    templateUrl: './reset-password.component.html',
-    // styleUrls: ['./reset-password.component.scss'],
+    selector: "vsf-reset-password",
+    templateUrl: "./reset-password.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class ResetPasswordComponent {
-    password = '';
-    error = '';
+    password = "";
+    error = "";
     private readonly token: string | undefined;
 
-    constructor(private dataService: DataService,
-                private stateService: StateService,
-                private route: ActivatedRoute,
-                private router: Router) {
-        this.token = this.route.snapshot.queryParamMap.get('token') || undefined;
+    dataService = inject(DataService);
+    stateService = inject(StateService);
+    route = inject(ActivatedRoute);
+    router = inject(Router);
+
+    constructor() {
+        this.token =
+            this.route.snapshot.queryParamMap.get("token") || undefined;
         if (!this.token) {
-            this.error = 'No token provided! Cannot reset password.';
+            this.error = "No token provided! Cannot reset password.";
         }
     }
 
     confirmPasswordReset() {
         if (this.token) {
-            this.dataService.mutate<ResetPasswordMutation, ResetPasswordMutationVariables>(RESET_PASSWORD, {
-                token: this.token,
-                password: this.password,
-            })
-                .subscribe(
-                    () => {
-                        this.stateService.setState('signedIn', true);
-                        this.router.navigate(['/account']);
-                    },
-                );
+            this.dataService
+                .mutate<ResetPasswordMutation, ResetPasswordMutationVariables>(
+                    RESET_PASSWORD,
+                    {
+                        token: this.token,
+                        password: this.password,
+                    }
+                )
+                .subscribe(() => {
+                    this.stateService.setState("signedIn", true);
+                    this.router.navigate(["/account"]);
+                });
         }
     }
 }
