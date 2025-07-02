@@ -3,12 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+    env: "dev",
     production: false,
-    apiHost: 'http://localhost',
+    apiHost: "https://demo.vendure.io", //'http://localhost',
     apiPort: 3000,
-    shopApiPath: 'shop-api',
-    baseHref: '/',
-    tokenMethod: 'bearer',
+    shopApiPath: "shop-api",
+    baseHref: "/",
+    tokenMethod: "bearer",
+    apiUrl: "https://demo.vendure.io/shop-api",
 };
 
 /*

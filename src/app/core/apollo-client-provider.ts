@@ -1,17 +1,28 @@
-import { isPlatformBrowser } from '@angular/common';
-import { HttpHeaders } from '@angular/common/http';
-import { FactoryProvider, Optional, PLATFORM_ID, makeStateKey, TransferState } from '@angular/core';
+import { isPlatformBrowser } from "@angular/common";
+import { HttpHeaders } from "@angular/common/http";
+import {
+    FactoryProvider,
+    makeStateKey,
+    Optional,
+    PLATFORM_ID,
+    TransferState,
+} from "@angular/core";
 
-import { ApolloClientOptions, ApolloLink, InMemoryCache } from '@apollo/client/core';
-import { REQUEST } from '../../express.tokens';
-import { APOLLO_OPTIONS } from 'apollo-angular';
-import { HttpLink, Options } from 'apollo-angular/http';
-import { Request } from 'express';
+import {
+    ApolloClientOptions,
+    ApolloLink,
+    InMemoryCache,
+} from "@apollo/client/core";
+import { APOLLO_OPTIONS } from "apollo-angular";
+import { HttpLink, Options } from "apollo-angular/http";
+import { Request } from "express";
+import { REQUEST } from "../../express.tokens";
 
-import { environment } from '../../environments/environment';
-import possibleTypesResult from '../common/introspection-results';
+import { environment } from "../../environments/environment";
+import { ENV } from "../common/constants";
+import possibleTypesResult from "../common/introspection-results";
 
-const STATE_KEY = makeStateKey<any>('apollo.state');
+const STATE_KEY = makeStateKey<any>("apollo.state");
 let apolloCache: InMemoryCache;
 
 export const APOLLO_CLIENT_PROVIDER: FactoryProvider = {
@@ -21,7 +32,7 @@ export const APOLLO_CLIENT_PROVIDER: FactoryProvider = {
 };
 
 function mergeFields(existing: any, incoming: any) {
-    return {...existing, ...incoming};
+    return { ...existing, ...incoming };
 }
 
 function relaceFields(existing: any, incoming: any) {
@@ -31,10 +42,10 @@ function relaceFields(existing: any, incoming: any) {
 // Trying to debug why sessions won't work in Safari 13.1
 // but only on the live prod version.
 function logInterceptorData(on: boolean) {
-    localStorage.setItem('_logInterceptorData', on ? 'true' : 'false');
+    localStorage.setItem("_logInterceptorData", on ? "true" : "false");
 }
 
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
     (window as any).logInterceptorData = logInterceptorData;
 }
 
@@ -42,9 +53,9 @@ export function apolloOptionsFactory(
     httpLink: HttpLink,
     platformId: object,
     transferState: TransferState,
-    req?: Request,
+    req?: Request
 ): ApolloClientOptions<any> {
-    const AUTH_TOKEN_KEY = 'auth_token';
+    const AUTH_TOKEN_KEY = "auth_token";
     apolloCache = new InMemoryCache({
         possibleTypes: possibleTypesResult.possibleTypes,
         typePolicies: {
@@ -101,8 +112,8 @@ export function apolloOptionsFactory(
         },
     });
 
-    const {apiHost, apiPort, shopApiPath} = environment;
-    const uri = `${apiHost}:${apiPort}/${shopApiPath}`;
+    const { apiUrl, env } = environment;
+    const uri = env === ENV.dev ? "http://localhost:3000/shop-api" : apiUrl;
     const options: Options = {
         uri,
         withCredentials: false,
@@ -112,7 +123,8 @@ export function apolloOptionsFactory(
     const afterware = new ApolloLink((operation, forward) => {
         return forward(operation).map((response) => {
             const context = operation.getContext();
-            const authHeader = context.response.headers.get('vendure-auth-token');
+            const authHeader =
+                context.response.headers.get("vendure-auth-token");
             if (authHeader && isPlatformBrowser(platformId)) {
                 // If the auth token has been returned by the Vendure
                 // server, we store it in localStorage
@@ -125,8 +137,8 @@ export function apolloOptionsFactory(
         if (isPlatformBrowser(platformId)) {
             operation.setContext({
                 headers: new HttpHeaders().set(
-                    'Authorization',
-                    `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY) || null}`,
+                    "Authorization",
+                    `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY) || null}`
                 ),
             });
         }

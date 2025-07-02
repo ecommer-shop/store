@@ -1,8 +1,20 @@
 {
-  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
     "source.organizeImports": "always"
   },
-  "prettier.singleQuote": true
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.arrowParens": "always",
+  "prettier.printWidth": 120,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "all",
+  "prettier.useTabs": false,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#282C43",
+    "titleBar.activeBackground": "#383D5E",
+    "titleBar.activeForeground": "#F9F9FB"
+  }
 }
