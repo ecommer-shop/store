@@ -5,12 +5,12 @@
 export const environment = {
     env: "dev",
     production: false,
-    apiHost: "https://demo.vendure.io", //'http://localhost',
-    apiPort: 3000,
+    apiHost: "https://shop-rt.up.railway.app", //'http://localhost',
+    apiPort: 8080,
     shopApiPath: "shop-api",
     baseHref: "/",
     tokenMethod: "bearer",
-    apiUrl: "https://demo.vendure.io/shop-api",
+    apiUrl: "https://shop-rt.up.railway.app/shop-api",
 };
 
 /*

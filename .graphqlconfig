@@ -1,8 +1,8 @@
 {
     "extensions": {
         "endpoints": {
-            "demo": "https://demo.vendure.io/shop-api",
-            "dev": "https://demo.vendure.io/shop-api"
+            "demo": "https://shop-rt.up.railway.app/shop-api",
+            "dev": "https://shop-rt.up.railway.app/shop-api"
         }
     },
     "schemaPath": "./schema.graphql"
