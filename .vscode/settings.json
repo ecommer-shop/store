@@ -12,9 +12,12 @@
   "prettier.tabWidth": 2,
   "prettier.trailingComma": "all",
   "prettier.useTabs": false,
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#282C43",
-    "titleBar.activeBackground": "#383D5E",
-    "titleBar.activeForeground": "#F9F9FB"
-  }
+  "cSpell.words": [
+    "codegen",
+    "codelyzer",
+    "fontawesome",
+    "packagr",
+    "photoswipe",
+    "vendure"
+  ]
 }
