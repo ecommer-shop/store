@@ -41,11 +41,11 @@
             <vsf-product-card
             [product]="product"></vsf-product-card>
           }
-        } @else {
-          @for (product of placeholderProducts; track product.productId) {
+        <!-- } @else { todo: check if this is needed
+          @for (product of placeholderProducts; track product.name) {
             <vsf-product-card
             [product]="product"></vsf-product-card>
-          }
+          } -->
         }
       </div>
       @if (displayLoadMore$ | async) {
