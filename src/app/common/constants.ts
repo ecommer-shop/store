@@ -1,12 +1,12 @@
 export const NAV = {
-    home: "/",
     account: "/account",
-    signIn: "/sign-in",
-    signUp: "/sign-up",
-    verify: "/verify",
     cart: "/cart",
     checkout: "/checkout",
     collections: "/collections",
+    home: "/",
+    signIn: "/sign-in",
+    signUp: "/sign-up",
+    verify: "/verify",
 } as const;
 
 export const AUTH = {
@@ -15,6 +15,6 @@ export const AUTH = {
 
 export const ENV = {
     dev: "dev",
-    qa: "qa",
     prod: "prod",
+    qa: "qa",
 } as const;
