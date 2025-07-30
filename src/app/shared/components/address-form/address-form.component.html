@@ -108,7 +108,7 @@
         <select
           class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
           formControlName="countryCode" id="countryCode">
-          @for (country of availableCountries; track country) {
+          @for (country of availableCountries; track country.code) {
             <option [ngValue]="country.code">
               {{ country.name }}
             </option>

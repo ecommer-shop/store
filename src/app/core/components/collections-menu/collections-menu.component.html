@@ -1,7 +1,7 @@
 <div class="max-w-6xl mx-auto p-4 flex items-center">
   @if (collectionTree$ | async; as tree) {
     <ul class="flex space-x-4">
-      @for (collection of tree.children; track collection) {
+      @for (collection of tree.children; track collection.id) {
         <li class="nav-item"
           (mouseenter)="onMouseEnter(collection)"
           (mouseleave)="close($event)">

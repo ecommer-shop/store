@@ -12,7 +12,7 @@
           Collections
         </h2>
         <div class="mt-2 grid max-w-sm sm:max-w-none mx-auto grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
-          @for (child of collection.children; track child) {
+          @for (child of collection.children; track child.id) {
             <vsf-collection-card
               [collection]="child">
             </vsf-collection-card>
@@ -42,7 +42,7 @@
             [product]="product"></vsf-product-card>
           }
         } @else {
-          @for (product of placeholderProducts; track product) {
+          @for (product of placeholderProducts; track product.productId) {
             <vsf-product-card
             [product]="product"></vsf-product-card>
           }

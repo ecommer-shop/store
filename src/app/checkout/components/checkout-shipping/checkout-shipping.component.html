@@ -5,9 +5,12 @@
     </div>
     <div class="" [ngClass]="step === 'selectAddress' ? 'block' : 'hidden'">
       <div class="d-flex flex-wrap">
-        @for (address of customerAddresses$ | async; track address) {
+        @for (address of customerAddresses$ | async; track address.id) {
           <div class="customer-address"
-            (click)="setShippingAddress(address)">
+            tabindex="0"
+            (click)="setShippingAddress(address)"
+            (keyup.enter)="setShippingAddress(address)"
+            (keyup.space)="setShippingAddress(address)">
             @for (line of getLines(address); track line) {
               <div class="address-line">
                 {{ line }}
@@ -22,7 +25,7 @@
     </div>
   </div>
 }
-@if (!(signedIn$ | async)) {
+@if ((signedIn$ | async) === false) {
   <div class="">
     <h2 class="text-lg font-medium text-gray-900">
       Contact information
@@ -109,7 +112,7 @@
     (selectItem)="setShippingMethod($event.id)"
     >
     <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-      @for (method of eligibleShippingMethods$ | async; track method) {
+      @for (method of eligibleShippingMethods$ | async; track method.name) {
         <vsf-radio-card [item]="method">
           <span class="block text-sm font-medium text-gray-900">
             {{ method.name }}

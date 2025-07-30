@@ -1,5 +1,5 @@
 <div class="flex flex-wrap space-x-6">
-  @for (address of addresses$ | async; track address) {
+  @for (address of addresses$ | async; track address.id) {
     <vsf-address-card
       [address]="address"
       class="w-64">

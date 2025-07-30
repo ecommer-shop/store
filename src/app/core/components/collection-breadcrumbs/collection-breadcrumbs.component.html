@@ -9,7 +9,7 @@
       </div>
     </li>
     @if (breadcrumbs) {
-      @for (breadcrumb of tail(breadcrumbs); track breadcrumb; let isLast = $last; let isFirst = $first) {
+      @for (breadcrumb of tail(breadcrumbs); track breadcrumb.name; let isLast = $last; let isFirst = $first) {
         <li>
           <div class="flex items-center">
             <svg

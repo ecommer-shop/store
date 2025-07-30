@@ -12,7 +12,7 @@
 
 @if (1 < assets?.length) {
   <div class="flex flex-wrap space-x-2 mt-2">
-    @for (asset of assets; track asset) {
+    @for (asset of assets; track asset.id) {
       <div
         (click)="selectImage(asset.id)">
         <img [src]="asset | assetPreview:'thumb'" class="rounded-lg select-none h-24 w-full object-cover">

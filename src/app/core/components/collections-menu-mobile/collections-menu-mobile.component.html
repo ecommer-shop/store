@@ -24,14 +24,14 @@
 
               @if (collectionTree$ | async; as tree) {
                 <ul class="">
-                  @for (collection of tree.children; track collection) {
+                  @for (collection of tree.children; track collection.name) {
                     <li class="">
                       <a class="block cursor-pointer w-full text-gray-600 hover:bg-gray-50 hover:text-gray-900 group items-center px-3 py-2 font-medium rounded-md"
                       (click)="onL0Click($event, collection)">{{ collection.name }}</a>
                       @if (collection.children.length) {
                         <ul
                           [ngClass]="selected0 === collection.id ? 'block' : 'hidden'">
-                          @for (level1 of collection.children; track level1) {
+                          @for (level1 of collection.children; track level1.name) {
                             <li class="level1">
                               <a class="block cursor-pointer w-full pl-8 text-gray-600 hover:bg-gray-50 hover:text-gray-900 group items-center px-3 py-2 font-medium rounded-md"
                               (click)="onL1Click($event, level1)">{{ level1.name }}</a>
@@ -39,7 +39,7 @@
                                 <ul
                                   class="expandable"
                                   [class.expanded]="selected1 === level1.id">
-                                  @for (level2 of level1.children; track level2) {
+                                  @for (level2 of level1.children; track level2.id) {
                                     <li class="level2">
                                       <a class=""
                                         (click)="close()"

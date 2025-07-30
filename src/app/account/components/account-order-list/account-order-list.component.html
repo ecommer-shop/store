@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody class="bg-white">
-    @for (order of orders$ | async; track order) {
+    @for (order of orders$ | async; track order.code) {
       <tr>
         <th scope="row" class="text-left pl-4 font-medium text-gray-700 hover:text-primary-600">
           <a [routerLink]="['./', order.code]">
