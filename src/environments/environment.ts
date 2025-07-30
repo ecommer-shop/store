@@ -6,7 +6,7 @@ export const environment = {
     env: "dev",
     production: false,
     apiHost: "https://shop-rt.up.railway.app", //'http://localhost',
-    apiPort: 8080,
+    apiPort: 443,
     shopApiPath: "shop-api",
     baseHref: "/",
     tokenMethod: "bearer",
