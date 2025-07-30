@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "4000:4000" # host:container
+        # volumes:
+        #   - .:/app  # mount current directory
+        environment:
+            - NODE_ENV=prod
+        restart: unless-stopped
+    # app:
+    #     build:
+    #         context: .
+    #         dockerfile: Dockerfile
+    #     ports:
+    #         - "4000:4000" # host:container
+    #     # volumes:
+    #     #   - .:/app  # mount current directory
+    #     environment:
+    #         - NODE_ENV=prod
+    #     restart: unless-stopped
+    # networks:
+    #     - default
+    # app:
+    #     build:
+    #         context: .
+    #         dockerfile: Dockerfile
+    #     ports:
+    #         - "4000:4000" # host:container
+    #     # volumes:
+    #     #   - .:/app  # mount current directory
+    #     environment:
+    #         - NODE_ENV=prod
+    #     restart: unless-stopped
+# networks:
+#     default:
+#         driver: bridge
+#         external: true
+#         name: my_custom_network

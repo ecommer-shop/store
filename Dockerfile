@@ -1,10 +1,18 @@
-FROM node:16
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
-WORKDIR /home/node/app
-RUN npm install pm2 -g --unsafe-perm
-USER node
-COPY --chown=node:node . .
-RUN ["chmod", "+x", "install-storefront.sh"]
-RUN ["./install-storefront.sh", "v0.3.1"]
+
+
+# Build stage
+FROM node:24.4.1 AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --force
+COPY . .
+RUN npm run build
+
+# Production stage
+FROM node:24.4.1-alpine
+WORKDIR /app
+COPY --from=build /app/dist /app/dist
+COPY --from=build /app/node_modules /app/node_modules
 EXPOSE 4000
-CMD [ "pm2-runtime", "process.json" ]
+RUN ls -R /app/dist
+CMD ["/usr/local/bin/node", "/app/dist/server/server.mjs"]
