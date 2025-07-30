@@ -7,5 +7,5 @@ export const environment = {
     baseHref: "/",
     deployUrl: "/",
     tokenMethod: "cookie",
-    apiUrl: "https://shop-rt.up.railway.app/shop-api",
+    uri: "https://shop-rt.up.railway.app/shop-api",
 };

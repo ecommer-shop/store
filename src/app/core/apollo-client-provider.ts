@@ -19,7 +19,6 @@ import { Request } from "express";
 import { REQUEST } from "../../express.tokens";
 
 import { environment } from "../../environments/environment";
-import { ENV } from "../common/constants";
 import possibleTypesResult from "../common/introspection-results";
 
 const STATE_KEY = makeStateKey<any>("apollo.state");
@@ -112,8 +111,7 @@ export function apolloOptionsFactory(
         },
     });
 
-    const { apiUrl, env } = environment;
-    const uri = env === ENV.dev ? "http://localhost:3000/shop-api" : apiUrl;
+    const { uri } = environment;
     const options: Options = {
         uri,
         withCredentials: false,
