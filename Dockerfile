@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --force
 COPY . .
-RUN npm run build
+RUN npm run build --prod
 
 # Production stage
 FROM node:24.4.1-alpine
