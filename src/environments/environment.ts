@@ -5,12 +5,12 @@
 export const environment = {
     env: "dev",
     production: false,
-    apiHost: "https://shop-rt.up.railway.app", //'http://localhost',
-    apiPort: 443,
+    apiHost: "http://localhost",
+    apiPort: 3000,
     shopApiPath: "shop-api",
     baseHref: "/",
     tokenMethod: "bearer",
-    uri: "https://shop-rt.up.railway.app/shop-api",
+    uri: "http://localhost:3000/shop-api",
 };
 
 /*
