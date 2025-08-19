@@ -1,4 +1,4 @@
-import {gql} from 'apollo-angular';
+import { gql } from 'apollo-angular';
 
 
 import { ADDRESS_FRAGMENT, ASSET_FRAGMENT, COUNTRY_FRAGMENT } from './fragments.graphql';
@@ -54,4 +54,10 @@ export const GET_COLLECTIONS = gql`
         }
     }
     ${ASSET_FRAGMENT}
+`;
+
+export const GET_WOMPI_SIGNATURE = gql`
+  query GetWompiSignature($amountInCents: Int!) {
+    getWompiSignature(amountInCents: $amountInCents)
+  }
 `;
