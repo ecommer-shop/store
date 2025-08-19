@@ -19,5 +19,6 @@
     "packagr",
     "photoswipe",
     "vendure"
-  ]
+  ],
+  "nxConsole.generateAiAgentRules": true
 }
