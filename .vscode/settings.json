@@ -21,11 +21,5 @@
     "vendure",
     "WOMPI"
   ],
-  "nxConsole.generateAiAgentRules": true,
-  "workbench.colorCustomizations": {
-    "tab.activeBorder": "#3895e0",
-    "activityBar.background": "#070321",
-    "titleBar.activeBackground": "#101349",
-    "titleBar.activeForeground": "#ECFEFC"
-  }
+  "nxConsole.generateAiAgentRules": true
 }
