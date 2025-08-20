@@ -55,9 +55,3 @@ export const GET_COLLECTIONS = gql`
     }
     ${ASSET_FRAGMENT}
 `;
-
-export const GET_WOMPI_SIGNATURE = gql`
-  query GetWompiSignature($amountInCents: Int!) {
-    getWompiSignature(amountInCents: $amountInCents)
-  }
-`;

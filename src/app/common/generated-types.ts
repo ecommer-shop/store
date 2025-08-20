@@ -1,3 +1,4 @@
+// eslint-disable
 export type Maybe<T> = T;
 export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -2739,6 +2740,7 @@ export type ProvinceList = PaginatedList & {
 
 export type Query = {
   __typename?: 'Query';
+  GetPaymentSignature: Scalars['String'];
   /** The active Channel */
   activeChannel: Channel;
   /** The active Customer */
@@ -2785,6 +2787,11 @@ export type Query = {
   products: ProductList;
   /** Search Products based on the criteria set by the `SearchInput` */
   search: SearchResponse;
+};
+
+
+export type QueryGetPaymentSignatureArgs = {
+  amountInCents: Scalars['Int'];
 };
 
 
@@ -3363,6 +3370,66 @@ export type ResetPasswordMutationVariables = Exact<{
 
 export type ResetPasswordMutation = { __typename?: 'Mutation', resetPassword: { __typename?: 'CurrentUser', id: string, identifier: string } | { __typename?: 'NativeAuthStrategyError', errorCode: ErrorCode, message: string } | { __typename?: 'NotVerifiedError', errorCode: ErrorCode, message: string } | { __typename?: 'PasswordResetTokenExpiredError', errorCode: ErrorCode, message: string } | { __typename?: 'PasswordResetTokenInvalidError', errorCode: ErrorCode, message: string } | { __typename?: 'PasswordValidationError', errorCode: ErrorCode, message: string } };
 
+type ErrorResult_AlreadyLoggedInError_Fragment = { __typename?: 'AlreadyLoggedInError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_CouponCodeExpiredError_Fragment = { __typename?: 'CouponCodeExpiredError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_CouponCodeInvalidError_Fragment = { __typename?: 'CouponCodeInvalidError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_CouponCodeLimitError_Fragment = { __typename?: 'CouponCodeLimitError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_EmailAddressConflictError_Fragment = { __typename?: 'EmailAddressConflictError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_GuestCheckoutError_Fragment = { __typename?: 'GuestCheckoutError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_IdentifierChangeTokenExpiredError_Fragment = { __typename?: 'IdentifierChangeTokenExpiredError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_IdentifierChangeTokenInvalidError_Fragment = { __typename?: 'IdentifierChangeTokenInvalidError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_IneligiblePaymentMethodError_Fragment = { __typename?: 'IneligiblePaymentMethodError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_IneligibleShippingMethodError_Fragment = { __typename?: 'IneligibleShippingMethodError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_InsufficientStockError_Fragment = { __typename?: 'InsufficientStockError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_InvalidCredentialsError_Fragment = { __typename?: 'InvalidCredentialsError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_MissingPasswordError_Fragment = { __typename?: 'MissingPasswordError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_NativeAuthStrategyError_Fragment = { __typename?: 'NativeAuthStrategyError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_NegativeQuantityError_Fragment = { __typename?: 'NegativeQuantityError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_NoActiveOrderError_Fragment = { __typename?: 'NoActiveOrderError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_NotVerifiedError_Fragment = { __typename?: 'NotVerifiedError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_OrderLimitError_Fragment = { __typename?: 'OrderLimitError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_OrderModificationError_Fragment = { __typename?: 'OrderModificationError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_OrderPaymentStateError_Fragment = { __typename?: 'OrderPaymentStateError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_OrderStateTransitionError_Fragment = { __typename?: 'OrderStateTransitionError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_PasswordAlreadySetError_Fragment = { __typename?: 'PasswordAlreadySetError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_PasswordResetTokenExpiredError_Fragment = { __typename?: 'PasswordResetTokenExpiredError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_PasswordResetTokenInvalidError_Fragment = { __typename?: 'PasswordResetTokenInvalidError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_PasswordValidationError_Fragment = { __typename?: 'PasswordValidationError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_PaymentDeclinedError_Fragment = { __typename?: 'PaymentDeclinedError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_PaymentFailedError_Fragment = { __typename?: 'PaymentFailedError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_VerificationTokenExpiredError_Fragment = { __typename?: 'VerificationTokenExpiredError', errorCode: ErrorCode, message: string };
+
+type ErrorResult_VerificationTokenInvalidError_Fragment = { __typename?: 'VerificationTokenInvalidError', errorCode: ErrorCode, message: string };
+
+export type ErrorResultFragment = ErrorResult_AlreadyLoggedInError_Fragment | ErrorResult_CouponCodeExpiredError_Fragment | ErrorResult_CouponCodeInvalidError_Fragment | ErrorResult_CouponCodeLimitError_Fragment | ErrorResult_EmailAddressConflictError_Fragment | ErrorResult_GuestCheckoutError_Fragment | ErrorResult_IdentifierChangeTokenExpiredError_Fragment | ErrorResult_IdentifierChangeTokenInvalidError_Fragment | ErrorResult_IneligiblePaymentMethodError_Fragment | ErrorResult_IneligibleShippingMethodError_Fragment | ErrorResult_InsufficientStockError_Fragment | ErrorResult_InvalidCredentialsError_Fragment | ErrorResult_MissingPasswordError_Fragment | ErrorResult_NativeAuthStrategyError_Fragment | ErrorResult_NegativeQuantityError_Fragment | ErrorResult_NoActiveOrderError_Fragment | ErrorResult_NotVerifiedError_Fragment | ErrorResult_OrderLimitError_Fragment | ErrorResult_OrderModificationError_Fragment | ErrorResult_OrderPaymentStateError_Fragment | ErrorResult_OrderStateTransitionError_Fragment | ErrorResult_PasswordAlreadySetError_Fragment | ErrorResult_PasswordResetTokenExpiredError_Fragment | ErrorResult_PasswordResetTokenInvalidError_Fragment | ErrorResult_PasswordValidationError_Fragment | ErrorResult_PaymentDeclinedError_Fragment | ErrorResult_PaymentFailedError_Fragment | ErrorResult_VerificationTokenExpiredError_Fragment | ErrorResult_VerificationTokenInvalidError_Fragment;
+
 export type VerifyMutationVariables = Exact<{
   password: Scalars['String'];
   token: Scalars['String'];
@@ -3436,6 +3503,13 @@ export type TransitionToArrangingPaymentMutationVariables = Exact<{ [key: string
 
 export type TransitionToArrangingPaymentMutation = { __typename?: 'Mutation', transitionOrderToState?: { __typename?: 'Order', id: string, code: string, state: string, active: boolean, updatedAt: any, orderPlacedAt?: any, totalQuantity: number, subTotal: any, subTotalWithTax: any, total: any, totalWithTax: any, shipping: any, shippingWithTax: any, lines: Array<{ __typename?: 'OrderLine', id: string, unitPrice: any, unitPriceWithTax: any, quantity: number, linePriceWithTax: any, discountedLinePriceWithTax: any, featuredAsset?: { __typename?: 'Asset', id: string, width: number, height: number, name: string, preview: string, focalPoint?: { __typename?: 'Coordinate', x: number, y: number } }, productVariant: { __typename?: 'ProductVariant', id: string, name: string }, discounts: Array<{ __typename?: 'Discount', amount: any, amountWithTax: any, description: string, adjustmentSource: string, type: AdjustmentType }> }>, shippingLines: Array<{ __typename?: 'ShippingLine', priceWithTax: any, shippingMethod: { __typename?: 'ShippingMethod', id: string, code: string, name: string, description: string } }>, discounts: Array<{ __typename?: 'Discount', amount: any, amountWithTax: any, description: string, adjustmentSource: string, type: AdjustmentType }> } | { __typename?: 'OrderStateTransitionError', errorCode: ErrorCode, message: string } };
 
+export type GetPaymentSignatureQueryVariables = Exact<{
+  amountInCents: Scalars['Int'];
+}>;
+
+
+export type GetPaymentSignatureQuery = { __typename?: 'Query', signature: string };
+
 export type GetOrderForCheckoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3472,66 +3546,6 @@ export type CountryFragment = { __typename?: 'Country', id: string, code: string
 export type OrderAddressFragment = { __typename?: 'OrderAddress', fullName?: string, company?: string, streetLine1?: string, streetLine2?: string, city?: string, province?: string, postalCode?: string, country?: string, phoneNumber?: string };
 
 export type AddressFragment = { __typename?: 'Address', id: string, fullName?: string, company?: string, streetLine1: string, streetLine2?: string, city?: string, province?: string, postalCode?: string, phoneNumber?: string, defaultShippingAddress?: boolean, defaultBillingAddress?: boolean, country: { __typename?: 'Country', id: string, code: string, name: string } };
-
-type ErrorResult_AlreadyLoggedInError_Fragment = { __typename?: 'AlreadyLoggedInError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_CouponCodeExpiredError_Fragment = { __typename?: 'CouponCodeExpiredError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_CouponCodeInvalidError_Fragment = { __typename?: 'CouponCodeInvalidError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_CouponCodeLimitError_Fragment = { __typename?: 'CouponCodeLimitError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_EmailAddressConflictError_Fragment = { __typename?: 'EmailAddressConflictError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_GuestCheckoutError_Fragment = { __typename?: 'GuestCheckoutError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_IdentifierChangeTokenExpiredError_Fragment = { __typename?: 'IdentifierChangeTokenExpiredError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_IdentifierChangeTokenInvalidError_Fragment = { __typename?: 'IdentifierChangeTokenInvalidError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_IneligiblePaymentMethodError_Fragment = { __typename?: 'IneligiblePaymentMethodError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_IneligibleShippingMethodError_Fragment = { __typename?: 'IneligibleShippingMethodError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_InsufficientStockError_Fragment = { __typename?: 'InsufficientStockError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_InvalidCredentialsError_Fragment = { __typename?: 'InvalidCredentialsError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_MissingPasswordError_Fragment = { __typename?: 'MissingPasswordError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_NativeAuthStrategyError_Fragment = { __typename?: 'NativeAuthStrategyError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_NegativeQuantityError_Fragment = { __typename?: 'NegativeQuantityError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_NoActiveOrderError_Fragment = { __typename?: 'NoActiveOrderError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_NotVerifiedError_Fragment = { __typename?: 'NotVerifiedError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_OrderLimitError_Fragment = { __typename?: 'OrderLimitError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_OrderModificationError_Fragment = { __typename?: 'OrderModificationError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_OrderPaymentStateError_Fragment = { __typename?: 'OrderPaymentStateError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_OrderStateTransitionError_Fragment = { __typename?: 'OrderStateTransitionError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_PasswordAlreadySetError_Fragment = { __typename?: 'PasswordAlreadySetError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_PasswordResetTokenExpiredError_Fragment = { __typename?: 'PasswordResetTokenExpiredError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_PasswordResetTokenInvalidError_Fragment = { __typename?: 'PasswordResetTokenInvalidError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_PasswordValidationError_Fragment = { __typename?: 'PasswordValidationError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_PaymentDeclinedError_Fragment = { __typename?: 'PaymentDeclinedError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_PaymentFailedError_Fragment = { __typename?: 'PaymentFailedError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_VerificationTokenExpiredError_Fragment = { __typename?: 'VerificationTokenExpiredError', errorCode: ErrorCode, message: string };
-
-type ErrorResult_VerificationTokenInvalidError_Fragment = { __typename?: 'VerificationTokenInvalidError', errorCode: ErrorCode, message: string };
-
-export type ErrorResultFragment = ErrorResult_AlreadyLoggedInError_Fragment | ErrorResult_CouponCodeExpiredError_Fragment | ErrorResult_CouponCodeInvalidError_Fragment | ErrorResult_CouponCodeLimitError_Fragment | ErrorResult_EmailAddressConflictError_Fragment | ErrorResult_GuestCheckoutError_Fragment | ErrorResult_IdentifierChangeTokenExpiredError_Fragment | ErrorResult_IdentifierChangeTokenInvalidError_Fragment | ErrorResult_IneligiblePaymentMethodError_Fragment | ErrorResult_IneligibleShippingMethodError_Fragment | ErrorResult_InsufficientStockError_Fragment | ErrorResult_InvalidCredentialsError_Fragment | ErrorResult_MissingPasswordError_Fragment | ErrorResult_NativeAuthStrategyError_Fragment | ErrorResult_NegativeQuantityError_Fragment | ErrorResult_NoActiveOrderError_Fragment | ErrorResult_NotVerifiedError_Fragment | ErrorResult_OrderLimitError_Fragment | ErrorResult_OrderModificationError_Fragment | ErrorResult_OrderPaymentStateError_Fragment | ErrorResult_OrderStateTransitionError_Fragment | ErrorResult_PasswordAlreadySetError_Fragment | ErrorResult_PasswordResetTokenExpiredError_Fragment | ErrorResult_PasswordResetTokenInvalidError_Fragment | ErrorResult_PasswordValidationError_Fragment | ErrorResult_PaymentDeclinedError_Fragment | ErrorResult_PaymentFailedError_Fragment | ErrorResult_VerificationTokenExpiredError_Fragment | ErrorResult_VerificationTokenInvalidError_Fragment;
 
 export type AdjustItemQuantityMutationVariables = Exact<{
   id: Scalars['ID'];

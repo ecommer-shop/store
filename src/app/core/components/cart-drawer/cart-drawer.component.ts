@@ -1,18 +1,17 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { merge, Observable, map, shareReplay, switchMap, take } from 'rxjs';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { map, merge, Observable, shareReplay, switchMap, take } from 'rxjs';
 
 import {
     AdjustItemQuantityMutation, AdjustItemQuantityMutationVariables,
     GetActiveOrderQuery,
-    GetActiveOrderQueryVariables,
     RemoveItemFromCartMutation, RemoveItemFromCartMutationVariables
 } from '../../../common/generated-types';
 import { DataService } from '../../providers/data/data.service';
 import { NotificationService } from '../../providers/notification/notification.service';
 import { StateService } from '../../providers/state/state.service';
 
-import { ADJUST_ITEM_QUANTITY, REMOVE_ITEM_FROM_CART } from './cart-drawer.graphql';
 import { ActiveService } from '../../providers/active/active.service';
+import { ADJUST_ITEM_QUANTITY, REMOVE_ITEM_FROM_CART } from './cart-drawer.graphql';
 
 @Component({
     selector: 'vsf-cart-drawer',
@@ -29,10 +28,12 @@ export class CartDrawerComponent implements OnInit {
     cart$: Observable<GetActiveOrderQuery['activeOrder']>;
     isEmpty$: Observable<boolean>;
 
-    constructor(private dataService: DataService,
-                private stateService: StateService,
-                private activeService: ActiveService,
-                private notificationService: NotificationService) {}
+    private readonly dataService = inject(DataService);
+    private readonly stateService = inject(StateService);
+    private readonly activeService = inject(ActiveService);
+    private readonly notificationService = inject(NotificationService);
+
+    constructor() { }
 
     ngOnInit() {
         this.cart$ = merge(

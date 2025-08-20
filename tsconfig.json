@@ -1,7 +1,15 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@core/*": ["src/app/core/*"],
+      "@account/*": ["src/app/account/*"],
+      "@checkout/*": ["src/app/checkout/*"],
+      "@common/*": ["src/app/common/*"],
+      "@shared/*": ["src/app/shared/*"]
+    },
     "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "esModuleInterop": true,
@@ -14,14 +22,8 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "target": "ES2022",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom",
-      "esnext.asynciterable"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom", "esnext.asynciterable"],
     "useDefineForClassFields": false
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CartFragment } from '../../../common/generated-types';
 
 @Component({
@@ -8,11 +8,6 @@ import { CartFragment } from '../../../common/generated-types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
-export class CartTotalsComponent implements OnInit {
+export class CartTotalsComponent {
     @Input() cart: CartFragment;
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

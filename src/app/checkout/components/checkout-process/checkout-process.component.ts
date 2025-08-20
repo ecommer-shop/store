@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Observable, filter, map, startWith, switchMap } from 'rxjs';
+import { filter, map, Observable, startWith, switchMap } from 'rxjs';
 
-import { GetOrderForCheckoutQuery, GetNextOrderStatesQuery, TransitionToAddingItemsMutation } from '../../../common/generated-types';
+import { GetNextOrderStatesQuery, GetOrderForCheckoutQuery, TransitionToAddingItemsMutation } from '../../../common/generated-types';
 import { DataService } from '../../../core/providers/data/data.service';
 import { StateService } from '../../../core/providers/state/state.service';
 
@@ -21,10 +21,11 @@ export class CheckoutProcessComponent implements OnInit {
     nextStates$: Observable<string[]>;
     activeStage$: Observable<number>;
     signedIn$: Observable<boolean>;
-    constructor(private dataService: DataService,
-                private stateService: StateService,
-                private route: ActivatedRoute,
-                private router: Router) { }
+
+    private dataService = inject(DataService);
+    private stateService = inject(StateService);
+    private route = inject(ActivatedRoute);
+    private router = inject(Router);
 
     ngOnInit() {
         this.signedIn$ = this.stateService.select(state => state.signedIn);
@@ -32,7 +33,7 @@ export class CheckoutProcessComponent implements OnInit {
         this.nextStates$ = this.dataService.query<GetNextOrderStatesQuery>(GET_NEXT_ORDER_STATES).pipe(
             map(data => data.nextOrderStates),
         );
-        this.activeStage$ =  this.router.events.pipe(
+        this.activeStage$ = this.router.events.pipe(
             filter((event) => event instanceof NavigationEnd),
             startWith(true),
             map(() => {
