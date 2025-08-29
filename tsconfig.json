@@ -8,7 +8,8 @@
       "@account/*": ["src/app/account/*"],
       "@checkout/*": ["src/app/checkout/*"],
       "@common/*": ["src/app/common/*"],
-      "@shared/*": ["src/app/shared/*"]
+      "@shared/*": ["src/app/shared/*"],
+      "@envs/*": ["src/environments/*"]
     },
     "importHelpers": true,
     "outDir": "./dist/out-tsc",

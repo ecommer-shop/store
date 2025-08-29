@@ -10,9 +10,9 @@ import { GET_ORDER_FOR_CHECKOUT } from './checkout-resolver.graphql';
 export type ActiveOrderStream = Observable<GetOrderForCheckoutQuery['activeOrder'] | null | undefined>;
 
 @Injectable({ providedIn: 'root' })
-export class CheckoutResolver  {
+export class CheckoutResolver {
 
-    constructor(private dataService: DataService) {}
+    constructor(private dataService: DataService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ActiveOrderStream> {
         const activeOrder$ = this.dataService.query<GetOrderForCheckoutQuery>(GET_ORDER_FOR_CHECKOUT).pipe(

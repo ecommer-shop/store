@@ -20,6 +20,7 @@ import { CollectionCardComponent } from './components/collection-card/collection
 import { DropdownContentDirective } from './components/dropdown/dropdown-content.directive';
 import { DropdownTriggerDirective } from './components/dropdown/dropdown-trigger.directive';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { PaymentButton } from './components/payment-button/payment-button';
 import { RadioCardFieldsetComponent } from './components/radio-card/radio-card-fieldset.component';
 import { RadioCardComponent } from './components/radio-card/radio-card.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -50,6 +51,7 @@ const SHARED_DECLARATIONS = [
     RadioCardComponent,
     RadioCardFieldsetComponent,
     CartTotalsComponent,
+    PaymentButton
 ];
 
 const IMPORTS = [

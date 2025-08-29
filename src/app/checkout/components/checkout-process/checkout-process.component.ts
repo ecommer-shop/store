@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/cor
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, Observable, startWith, switchMap } from 'rxjs';
 
-import { GetNextOrderStatesQuery, GetOrderForCheckoutQuery, TransitionToAddingItemsMutation } from '../../../common/generated-types';
-import { DataService } from '../../../core/providers/data/data.service';
-import { StateService } from '../../../core/providers/state/state.service';
+import { GetNextOrderStatesQuery, GetOrderForCheckoutQuery, TransitionToAddingItemsMutation } from '@common/generated-types';
+import { DataService } from '@core/providers/data/data.service';
+import { StateService } from '@core/providers/state/state.service';
 
 import { GET_NEXT_ORDER_STATES, TRANSITION_TO_ADDING_ITEMS } from './checkout-process.graphql';
 

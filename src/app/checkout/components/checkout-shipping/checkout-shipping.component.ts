@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of, Subject, map, mergeMap, switchMap, takeUntil, tap } from 'rxjs';
+import { map, mergeMap, Observable, of, Subject, switchMap, takeUntil, tap } from 'rxjs';
 
 import {
     AddressFragment,
@@ -17,15 +17,15 @@ import {
     SetShippingMethodMutation,
     SetShippingMethodMutationVariables,
     TransitionToArrangingPaymentMutation
-} from '../../../common/generated-types';
-import { GET_AVAILABLE_COUNTRIES, GET_CUSTOMER_ADDRESSES } from '../../../common/graphql/documents.graphql';
-import { notNullOrUndefined } from '../../../common/utils/not-null-or-undefined';
-import { DataService } from '../../../core/providers/data/data.service';
-import { ModalService } from '../../../core/providers/modal/modal.service';
-import { NotificationService } from '../../../core/providers/notification/notification.service';
-import { StateService } from '../../../core/providers/state/state.service';
-import { AddressFormComponent } from '../../../shared/components/address-form/address-form.component';
-import { AddressModalComponent } from '../../../shared/components/address-modal/address-modal.component';
+} from '@common/generated-types';
+import { GET_AVAILABLE_COUNTRIES, GET_CUSTOMER_ADDRESSES } from '@common/graphql/documents.graphql';
+import { notNullOrUndefined } from '@common/utils/not-null-or-undefined';
+import { DataService } from '@core/providers/data/data.service';
+import { ModalService } from '@core/providers/modal/modal.service';
+import { NotificationService } from '@core/providers/notification/notification.service';
+import { StateService } from '@core/providers/state/state.service';
+import { AddressFormComponent } from '@shared/components/address-form/address-form.component';
+import { AddressModalComponent } from '@shared/components/address-modal/address-modal.component';
 
 import {
     GET_ELIGIBLE_SHIPPING_METHODS,
@@ -57,15 +57,14 @@ export class CheckoutShippingComponent implements OnInit, OnDestroy {
     contactForm: UntypedFormGroup;
     private destroy$ = new Subject<void>();
 
-    constructor(private dataService: DataService,
-                private stateService: StateService,
-                private changeDetector: ChangeDetectorRef,
-                private modalService: ModalService,
-                private notificationService: NotificationService,
-                private formBuilder: UntypedFormBuilder,
-                private route: ActivatedRoute,
-                private router: Router) {
-    }
+    private readonly dataService = inject(DataService);
+    private readonly stateService = inject(StateService);
+    private readonly changeDetector = inject(ChangeDetectorRef);
+    private readonly modalService = inject(ModalService);
+    private readonly notificationService = inject(NotificationService);
+    private readonly formBuilder = inject(UntypedFormBuilder);
+    private readonly route = inject(ActivatedRoute);
+    private readonly router = inject(Router);
 
     ngOnInit() {
         this.contactForm = this.formBuilder.group({
@@ -98,7 +97,7 @@ export class CheckoutShippingComponent implements OnInit, OnDestroy {
                     firstName: customer.firstName,
                     lastName: customer.lastName,
                     emailAddress: customer.emailAddress,
-                }, {emitEvent: false});
+                }, { emitEvent: false });
             }
         });
     }
@@ -133,7 +132,7 @@ export class CheckoutShippingComponent implements OnInit, OnDestroy {
     }
 
     editAddress(address: AddressFragment) {
-        this.addressForm.addressForm.patchValue({...address, countryCode: address.country.code});
+        this.addressForm.addressForm.patchValue({ ...address, countryCode: address.country.code });
     }
 
     onCustomerFormBlur() {
@@ -150,7 +149,7 @@ export class CheckoutShippingComponent implements OnInit, OnDestroy {
         const input = this.valueToAddressInput(value);
         this.dataService.mutate<SetShippingAddressMutation, SetShippingAddressMutationVariables>(SET_SHIPPING_ADDRESS, {
             input,
-        }).subscribe(data => {
+        }).subscribe(() => {
             this.changeDetector.markForCheck();
         });
     }
@@ -170,8 +169,8 @@ export class CheckoutShippingComponent implements OnInit, OnDestroy {
                     }),
                 ),
                 mergeMap(() => this.dataService.mutate<TransitionToArrangingPaymentMutation>(TRANSITION_TO_ARRANGING_PAYMENT)),
-            ).subscribe((data) => {
-                this.router.navigate(['../payment'], {relativeTo: this.route});
+            ).subscribe(() => {
+                this.router.navigate(['../payment'], { relativeTo: this.route });
             });
         }
     }
@@ -185,9 +184,9 @@ export class CheckoutShippingComponent implements OnInit, OnDestroy {
             return this.dataService.mutate<SetCustomerForOrderMutation, SetCustomerForOrderMutationVariables>(SET_CUSTOMER_FOR_ORDER, {
                 input: this.contactForm.value,
             }).pipe(
-                tap(({setCustomerForOrder}) => {
+                tap(({ setCustomerForOrder }) => {
                     if (setCustomerForOrder && setCustomerForOrder.__typename !== 'Order') {
-                        this.notificationService.error((setCustomerForOrder as any).message).subscribe();
+                        this.notificationService.error((setCustomerForOrder as { message: string }).message).subscribe();
                     }
                 })
             );
