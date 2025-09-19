@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "angular.ng-template",              
+    "dbaeumer.vscode-eslint",           
+    "esbenp.prettier-vscode",            
+    "graphql.vscode-graphql",            
+    "graphql.vscode-graphql-syntax",     
+    "ms-vscode.vscode-typescript-next",  
+    "nrwl.angular-console",              
+    "eamodio.gitlens",                   
+    "mikestead.dotenv",                  
+    "ms-azuretools.vscode-docker",
+    "streetsidesoftware.code-spell-checker",
+    "EditorConfig.EditorConfig"
+  ]
+}
