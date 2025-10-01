@@ -1,8 +1,8 @@
 {
     "extensions": {
         "endpoints": {
-            "demo": "https://shop-rt.up.railway.app/shop-api",
-            "dev": "https://shop-rt.up.railway.app/shop-api"
+            "demo": "https://ecommer.shop/shop-api",
+            "dev": "https://ecommer.shop/shop-api"
         }
     },
     "schemaPath": "./schema.graphql"
