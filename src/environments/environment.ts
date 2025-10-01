@@ -10,7 +10,7 @@ export const environment = {
     shopApiPath: "shop-api",
     baseHref: "/",
     tokenMethod: "bearer",
-    uri: "https://shop-rt.up.railway.app/shop-api",
+    uri: "https://ecommer.shop/shop-api",
 };
 
 /*
