@@ -5,7 +5,7 @@
 export const environment = {
     env: "dev",
     production: false,
-    apiHost: "https://shop-rt.up.railway.app", //'http://localhost',
+    apiHost: "https://ecommer.shop", //'http://localhost',
     apiPort: 443,
     shopApiPath: "shop-api",
     baseHref: "/",
