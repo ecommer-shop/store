@@ -1,8 +1,8 @@
 {
     "extensions": {
         "endpoints": {
-            "demo": "https://ecommer.shop/shop-api",
-            "dev": "https://ecommer.shop/shop-api"
+            "demo": "https://admin.ecommer.shop/shop-api",
+            "dev": "https://admin.ecommer.shop/shop-api"
         }
     },
     "schemaPath": "./schema.graphql"
