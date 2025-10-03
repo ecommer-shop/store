@@ -5,12 +5,12 @@
 export const environment = {
     env: "dev",
     production: false,
-    apiHost: "https://ecommer.shop", //'http://localhost',
+    apiHost: "https://admin.ecommer.shop", //'http://localhost',
     apiPort: 443,
     shopApiPath: "shop-api",
     baseHref: "/",
     tokenMethod: "bearer",
-    uri: "https://ecommer.shop/shop-api",
+    uri: "https://admin.ecommer.shop/shop-api",
 };
 
 /*
