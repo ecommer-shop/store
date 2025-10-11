@@ -1,8 +1,8 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr/node';
 import express from 'express';
-import { fileURLToPath } from 'url';
 import { dirname, join, resolve } from 'path';
+import { fileURLToPath } from 'url';
 import { AppServerModule } from './src/main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
@@ -24,6 +24,14 @@ export function app(): express.Express {
     maxAge: '1y',
     index: 'index.html',
   }));
+
+  // Short-circuit requests for ACME/.well-known and similar asset-specific endpoints
+  // so they don't get sent to the Angular router (which will try to match them and error).
+  server.get('/.well-known/*', (req, res) => {
+    // If you actually need to serve files from .well-known, replace this with a proper
+    // static file serving or a sendFile call pointing to the correct path.
+    res.status(404).send('Not found');
+  });
 
   // All regular routes use the Angular engine
   server.get('**', (req, res, next) => {
