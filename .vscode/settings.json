@@ -20,5 +20,11 @@
     "photoswipe",
     "vendure"
   ],
-  "nxConsole.generateAiAgentRules": true
+  "nxConsole.generateAiAgentRules": true,
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#3895e0",
+    "activityBar.background": "#043430",
+    "titleBar.activeBackground": "#064944",
+    "titleBar.activeForeground": "#ECFEFC"
+  }
 }
