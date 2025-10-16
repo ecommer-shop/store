@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NavigationEnd, Router, RouterModule, UrlSerializer } from '@angular/router';
 import { filter } from 'rxjs';
 
+import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { HomePageComponent } from './core/components/home-page/home-page.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
