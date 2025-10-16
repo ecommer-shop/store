@@ -9,6 +9,7 @@ import { routes } from './app.routes';
 import { HomePageComponent } from './core/components/home-page/home-page.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
         RouterModule.forRoot(routes, { scrollPositionRestoration: 'disabled', initialNavigation: 'enabledBlocking' }),
         CoreModule,
         SharedModule,
+        MatButtonModule,
         // Using the service worker appears to break SSR after the initial page load.
         // ServiceWorkerModule.register(`${environment.baseHref}ngsw-worker.js`, {
         //     enabled: environment.production,
