@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, NgModule, PLATFORM_ID, DOCUMENT } from '@angular/core';
+import { DOCUMENT, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NavigationEnd, Router, RouterModule, UrlSerializer } from '@angular/router';
 import { filter } from 'rxjs';
@@ -17,7 +17,7 @@ import { SharedModule } from './shared/shared.module';
     ],
     imports: [
         BrowserModule,
-        RouterModule.forRoot(routes, { scrollPositionRestoration: 'disabled', initialNavigation: 'enabledBlocking' }),
+        RouterModule.forRoot(routes, { scrollPositionRestoration: 'disabled', initialNavigation: 'enabledNonBlocking' }),
         CoreModule,
         SharedModule,
         // Using the service worker appears to break SSR after the initial page load.
